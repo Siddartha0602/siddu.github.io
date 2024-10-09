@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:azure;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 7</h1>
+    <h2>7.What activities or environments do I feel most comfortable in?</h2>
+
+    <form id="comfort">
+        <label for="Embracing my own company"> 
+            <input type="checkbox" value="Embracing my own company" name="personality" id="Embracing my own company"><big> Embracing my own company</big>
+        </label><br><br>
+        <label for="Enjoying time with friends">
+            <input type="checkbox" value="Enjoying time with friends" name="personality" id="Enjoying time with friends"><big> Enjoying time with friends</big>
+        </label><br><br>
+        <label for="Spending time with family">
+            <input type="checkbox" value="Spending time with family" name="personality" id="Spending time with family"><big> Spending time with family</big>
+        </label><br><br>
+        <label for="All The Above">
+            <input type="checkbox" value="All The Above" name="personality" id="All The Above"><big> All The Above</big>
+        </label><br><br>
+        <button type="button" onclick="submitcomfortAnswer()">Submit</button>
+    </form>
+
+    <p id="playerResult" style="font-size: 20px;"></p>
+
+    <script>
+        function submitcomfortAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+            if (selectedOption) {
+                if (selectedOption.value === "Embracing my own company" || selectedOption.value === "Spending time with family") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "question8.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>

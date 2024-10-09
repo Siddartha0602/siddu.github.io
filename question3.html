@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:rgb(0, 255, 255);
+        }h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 3</h1>
+    <h2>3.Who do I love the most?</h2>
+
+    <form id="most">
+        <label for="Dad"> 
+            <input type="radio" value="Dad" name="personality" id="Dad"><big>  Dad</big>
+        </label><br><br>
+        <label for="Mom">
+            <input type="radio" value="Mom" name="personality" id="Mom"><big>  Mom</big>
+        </label><br><br>
+        <label for="Sister">
+            <input type="radio" value="Sister" name="personality" id="Sister"><big>  Sister</big>
+        </label><br><br>
+        <label for="All The Above">
+            <input type="radio" value="All The Above" name="personality" id="All The Above"><big> All The Above</big>
+        </label><br><br>
+        <button type="button" onclick="submitmostAnswer()">Submit</button>
+    </form>
+
+    <p id="mostResult" style="font-size: 20px;"></p>
+    <a href="/results.html"><h2></h2></a>
+
+    <!-- ... -->
+<script>
+    function submitmostAnswer() {
+        const selectedOption = document.querySelector('input[name="personality"]:checked');
+        let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+        if (selectedOption) {
+            if (selectedOption.value === "Mom") { 
+                totalScore++;
+            }
+            sessionStorage.setItem('totalScore', totalScore); 
+            sessionStorage.setItem('totalQuestions', 10); 
+            window.location.href = "question4.html"; 
+        } else {
+            document.getElementById('mostResult').innerText = "Please select an answer.";
+        }
+    }
+</script>
+</body>
+</html>

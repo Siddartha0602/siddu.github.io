@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 2: Personality Traits</title>
+    <style>
+        body {
+            background-color: palegreen;
+        }h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 2</h1>
+    <h2>2.How would you describe my personality and character traits?</h2>
+
+    <form id="personalityQuiz">
+        <label for="Extrovert"> 
+            <input type="radio" value="Extrovert" name="personality" id="Extrovert"><big> Extrovert</big>
+        </label><br><br>
+        <label for="Introvert">
+            <input type="radio" value="Introvert" name="personality" id="Introvert"><big> Introvert</big>
+        </label><br><br>
+        <label for="Ambivert">
+            <input type="radio" value="Ambivert" name="personality" id="Ambivert"><big> Ambivert</big>
+        </label><br><br>
+        <label for="None">
+            <input type="radio" value="None" name="personality" id="None"><big> None</big>
+        </label><br><br>
+        <button type="button" onclick="submitPersonalityAnswer()">Submit</button>
+    </form>
+
+    <p id="personalityResult" style="font-size: 20px;"></p>
+    <a href="/results.html"><h2></h2></a>
+
+    <!-- ... -->
+<script>
+    function submitPersonalityAnswer() {
+        const selectedOption = document.querySelector('input[name="personality"]:checked');
+        let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+        if (selectedOption) {
+            if (selectedOption.value === "Introvert") { 
+                totalScore++;
+            }
+            sessionStorage.setItem('totalScore', totalScore); 
+            sessionStorage.setItem('totalQuestions', 10); 
+            window.location.href = "question3.html"; 
+        } else {
+            document.getElementById('personalityResult').innerText = "Please select an answer.";
+        }
+    }
+</script>
+</body>
+</html>

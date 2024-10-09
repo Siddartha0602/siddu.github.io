@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:bisque;
+        }h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 5</h1>
+    <h2>5.Who is my favorite player?</h2>
+
+    <form id="player">
+        <label for="Virat kohli "> 
+            <input type="radio" value="Virat kohli" name="personality" id="Virat kohli"><big>  Virat kohli</big>
+        </label><br><br>
+        <label for="Rohit sharma">
+            <input type="radio" value="Rohit sharma" name="personality" id="Rohit sharma"><big>  Rohit sharma</big>
+        </label><br><br>
+        <label for="Suresh raina">
+            <input type="radio" value="Suresh raina" name="personality" id="Suresh raina"><big>  Suresh raina</big>
+        </label><br><br>
+        <label for="MS dhoni">
+            <input type="radio" value="MS dhoni" name="personality" id="MS dhoni"><big> MS dhoni</big>
+        </label><br><br>
+        <button type="button" onclick="submitplayerAnswer()">Submit</button>
+    </form>
+
+    <p id="player" style="font-size: 20px;"></p>
+    <a href="/results.html"><h2></h2></a>
+
+    <!-- ... -->
+    <script>
+        function submitplayerAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+    
+            if (selectedOption) {
+                if (selectedOption.value === "Suresh raina") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "question6.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>

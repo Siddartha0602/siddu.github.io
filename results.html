@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            background-color:lightyellow;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Congratulations!</h1>
+    <h3 id="username-display"></h3>
+    <h3>Total Points: <span id="total-points">0</span> / <span id="total-questions">0</span></h3>
+    <h3>Percentage: <span id="percentage-score">0</span>%</h3>
+    <h3>Result: <span id="result-message"></span></h3>
+
+    <script>
+        // Retrieve scores and username from session storage
+        let totalScore = sessionStorage.getItem('totalScore');
+        let totalQuestions = sessionStorage.getItem('totalQuestions');
+        let username = sessionStorage.getItem('username');
+
+        // Display username and scores
+        document.getElementById('username-display').innerText = `Hi ${username}, your quiz results are:`;
+        document.getElementById('total-points').innerText = totalScore;
+        document.getElementById('total-questions').innerText = totalQuestions;
+        document.getElementById('percentage-score').innerText = ((totalScore / totalQuestions) * 100).toFixed(2);
+
+        // Display result message
+        let percentageScore = parseFloat(document.getElementById('percentage-score').innerText);
+        if (percentageScore >= 80) {
+            document.getElementById('result-message').innerText = "Excellent!";
+        } else if (percentageScore >= 60) {
+            document.getElementById('result-message').innerText = "Good!";
+        } else {
+            document.getElementById('result-message').innerText = "Try Again!";
+        }
+
+        // Clear scores and username from session storage
+        sessionStorage.removeItem('totalScore');
+        sessionStorage.removeItem('totalQuestions');
+        sessionStorage.removeItem('username');
+    </script>
+</body>
+</html>
+
+

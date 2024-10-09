@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 8</h1>
+    <h2>8.What hobbies or interests of mine do you find most intriguing?</h2>
+
+    <form id="hobbies">
+        <label for="Exploring various books"> 
+            <input type="radio" value="Exploring various books" name="personality" id="Exploring various books"><big> Exploring various books</big>
+        </label><br><br>
+        <label for="Playing video games">
+            <input type="radio" value="Playing video games" name="personality" id="Playing video games"><big> Playing video games</big>
+        </label><br><br>
+        <label for="Acquiring knowledge">
+            <input type="radio" value="Acquiring knowledge" name="personality" id="Acquiring knowledge"><big> Acquiring knowledge</big>
+        </label><br><br>
+        <label for="All The Above">
+            <input type="radio" value="All The Above" name="personality" id="All The Above"><big> All The Above</big>
+        </label><br><br>
+        <button type="button" onclick="submithobbiesAnswer()">Submit</button>
+    </form>
+
+    <p id="playerResult" style="font-size: 20px;"></p>
+
+    <script>
+        function submithobbiesAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+            if (selectedOption) {
+                if (selectedOption.value === "All The Above") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "question9.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>

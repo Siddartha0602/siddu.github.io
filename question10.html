@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:peachpuff;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 10</h1>
+    <h2>10.Which Social Media  app do I use most frequently on my mobile device?</h2>
+
+    <form id="app">
+        <label for="YouTube"> 
+            <input type="radio" value="YouTube" name="personality" id="YouTube"><big>  YouTube</big>
+        </label><br><br>
+        <label for="Instagram">
+            <input type="radio" value="Instagram" name="personality" id="Instagram"><big>  Instagram</big>
+        </label><br><br>
+        <label for="Snapchat">
+            <input type="radio" value="Call Of Duty" name="personality" id="Call Of Duty"><big>  Call Of Duty</big>
+        </label><br><br>
+        <label for="Whatsapp">
+            <input type="radio" value="Temple Run" name="personality" id="Temple Run"><big>  Temple Run</big>
+        </label><br><br>
+        <button type="button" onclick="submitappAnswer()">Submit</button>
+    </form>
+
+    <p id="playerResult" style="font-size: 20px;"></p>
+
+    <script>
+        function submitappAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+            if (selectedOption) {
+                if (selectedOption.value === "Instagram") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "results.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:cyan;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 9</h1>
+    <h2>9.What is my favorite game?</h2>
+
+    <form id="game">
+        <label for="BGMI"> 
+            <input type="radio" value="BGMI" name="personality" id="BGMI"><big> BGMI</big>
+        </label><br><br>
+        <label for="Subway Surfers">
+            <input type="radio" value="Subway Surfers" name="personality" id="Subway Surfers"><big>  Subway Surfers</big>
+        </label><br><br>
+        <label for="Call Of Duty">
+            <input type="radio" value="Call Of Duty" name="personality" id="Call Of Duty"><big>  Call Of Duty</big>
+        </label><br><br>
+        <label for="Temple Run">
+            <input type="radio" value="Temple Run" name="personality" id="Temple Run"><big>  Temple Run</big>
+        </label><br><br>
+        <button type="button" onclick="submitgameAnswer()">Submit</button>
+    </form>
+
+    <p id="playerResult" style="font-size: 20px;"></p>
+
+    <script>
+        function submitgameAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+            if (selectedOption) {
+                if (selectedOption.value === "BGMI") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "question10.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>

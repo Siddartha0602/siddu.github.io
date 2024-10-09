@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 1: Favorite Color</title>
+    <style>
+        body {
+            background-color: peachpuff; 
+        }
+        h1{
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 1</h1>
+    <h2>1.What is my favorite color?</h2>
+    
+    <form id="colorQuiz">
+        <label for="red"> 
+            <input type="radio" value="Red" name="color" id="red"><big> Red</big>
+        </label><br><br>
+        <label for="yellow">
+            <input type="radio" value="Yellow" name="color" id="yellow"><big> Yellow</big>
+        </label><br><br>
+        <label for="blue">
+            <input type="radio" value="Blue" name="color" id="blue"><big> Blue</big>
+        </label><br><br>
+        <label for="black">
+            <input type="radio" value="Black" name="color" id="black"><big> Black</big>
+        </label><br><br>
+        <button type="button" onclick="submitColorAnswer()">Submit</button>
+    </form>
+
+    <p id="colorResult" style="font-size: 20px;"></p>
+    <!-- <a href="/question2.html"><h2>Next</h2></a> -->
+<!-- ... -->
+<script>
+    function submitColorAnswer() {
+        const selectedOption = document.querySelector('input[name="color"]:checked');
+        let totalScore = 0;
+
+        if (selectedOption) {
+            if (selectedOption.value === "Red") { 
+                totalScore = 1;
+            }
+            sessionStorage.setItem('totalScore', totalScore); 
+            sessionStorage.setItem('totalQuestions', 10); 
+            window.location.href = "question2.html"; 
+        } else {
+            document.getElementById('colorResult').innerText = "Please select an answer.";
+        }
+    }
+</script>
+    
+</body>
+</html>

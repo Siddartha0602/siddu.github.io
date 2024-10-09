@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 4: Personality Traits</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 4</h1>
+    <h2>4. What is my favorite cartoon?</h2>
+
+    <form id="cartoon">
+        <label for="Ninja Hattori"> 
+            <input type="radio" value="Ninja Hattori" name="cartoon" id="Ninja Hattori"><big>Ninja Hattori</big>
+        </label><br><br>
+        <label for="Doremon">
+            <input type="radio" value="Doremon" name="cartoon" id="Doremon"><big>Doremon</big>
+        </label><br><br>
+        <label for="Shin chan">
+            <input type="radio" value="Shin chan" name="cartoon" id="Shin chan"><big>Shin chan</big>
+        </label><br><br>
+        <label for="Pokemon">
+            <input type="radio" value="Pokemon" name="cartoon" id="Pokemon"><big>Pokemon</big>
+        </label><br><br>
+        <button type="button" onclick="submitCartoonAnswer()">Submit</button>
+    </form>
+
+    <p id="cartoonResult" style="font-size: 20px;"></p>
+
+    <!-- ... -->
+<script>
+    function submitCartoonAnswer() {
+        const selectedOption = document.querySelector('input[name="cartoon"]:checked');
+        let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+        if (selectedOption) {
+            if (selectedOption.value === "Shin chan") { 
+                totalScore++;
+            }
+            sessionStorage.setItem('totalScore', totalScore); 
+            sessionStorage.setItem('totalQuestions', 10); 
+            window.location.href = "question5.html"; 
+        } else {
+            document.getElementById('cartoonResult').innerText = "Please select an answer.";
+        }
+    }
+</script>
+</body>
+</html>

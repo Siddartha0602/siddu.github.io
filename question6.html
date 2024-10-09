@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Question 3: Personality Traits</title>
+    <style>
+        body {
+            background-color:lightgrey;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 6</h1>
+    <h2>6. What would you say is my greatest fear?</h2>
+
+    <form id="fearForm">
+        <label for="Losing people"> 
+            <input type="checkbox" value="Losing people" name="personality" id="Losing people"><big> Losing people</big>
+        </label><br><br>
+        <label for="Losing Friends">
+            <input type="checkbox" value="Losing Friends" name="personality" id="Losing Friends"><big> Losing Friends</big>
+        </label><br><br>
+        <label for="Losing Myself">
+            <input type="checkbox" value="Losing Myself" name="personality" id="Losing Myself"><big> Losing Myself</big>
+        </label><br><br>
+        <label for="Losing Family">
+            <input type="checkbox" value="Losing Family" name="personality" id="Losing Family"><big> Losing Family</big>
+        </label><br><br>
+        <button type="button" onclick="submitfearAnswer()">Submit</button>
+    </form>
+
+    <p id="playerResult" style="font-size: 20px;"></p>
+
+    <script>
+        function submitfearAnswer() {
+            const selectedOption = document.querySelector('input[name="personality"]:checked');
+            let totalScore = parseInt(sessionStorage.getItem('totalScore')) || 0;
+
+            if (selectedOption) {
+                if (selectedOption.value === "Losing Myself" || selectedOption.value === "Losing Family") { 
+                    totalScore++;
+                }
+                sessionStorage.setItem('totalScore', totalScore); 
+                sessionStorage.setItem('totalQuestions', 10); 
+                window.location.href = "question7.html"; 
+            } else {
+                document.getElementById('playerResult').innerText = "Please select an answer.";
+            }
+        }
+    </script>
+</body>
+</html>
